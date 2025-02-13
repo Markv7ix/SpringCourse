@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<context:annotation-config/>
+	<bean id="timestampPrefixGenerator"
+		class="com.springcourse.sequencegenerator.impl.TimestampPrefixGenerator">
+	</bean>
+	<bean id="datePrefixGenerator"
+		class="com.springcourse.sequencegenerator.impl.DatePrefixGenerator">
+		<property name="pattern" value="yyyyMMdd" />
+	</bean>
+	<bean id="sequenceGenerator"
+		class="com.springcourse.sequencegenerator.impl.SequenceGenerator">
+		<constructor-arg type="int" index="0" value="0" />
+		<constructor-arg type="java.lang.String" index="1"
+			value="MX" />
+		<property name="prefixGenerator">
+			<ref bean="datePrefixGenerator" />
+		</property>
+	</bean>
+	<bean id="countdownSequenceGenerator"
+		class="com.springcourse.sequencegenerator.impl.CountdownSequenceGenerator">
+		<constructor-arg type="int" index="0" value="100" />
+		<constructor-arg type="java.lang.String" index="1"
+			value="CA" />
+	</bean>
+</beans>

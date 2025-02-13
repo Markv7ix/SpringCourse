@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="newYear" class="com.example.demo.Holiday">
+		<property name="month" value="1" />
+		<property name="day" value="1" />
+		<property name="greetings" value="Happy New Year" />
+	</bean>
+	<bean id="christmas" class="com.example.demo.Holiday">
+		<property name="month" value="12" />
+		<property name="day" value="25" />
+		<property name="greetings" value="Merry Christmas" />
+	</bean>
+	<bean id="HelloWorld" class="com.example.demo.HelloWorld">
+		<property name="message" value="Welcome to the World of Spring" />
+		<property name="holidays">
+			<list>
+				<ref bean="newYear" />
+				<ref bean="christmas" />
+			</list>
+		</property>
+	</bean>
+</beans>

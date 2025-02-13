@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" /> 
+		<property name="url" value="jdbc:mysql://localhost:3306/testdb" /> 
+		<property name="username" value="root"/>
+		<property name="password" value="P@ssw0rd!"/>
+		<property name="initialSize" value="2"/>
+		<property name="maxActive" value="5"/>
+	</bean>
+	
+	<bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean name="jdbcVehicleDAO" class="com.springcourse.db.JdbcVehicleDAO">
+		<property name="jdbcTemplate" ref="jdbcTemplate"/>
+	</bean>
+
+
+</beans>
